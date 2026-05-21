@@ -1,5 +1,6 @@
 package com.gabrielfinkler.screenmatch;
 
+import com.gabrielfinkler.screenmatch.model.DadosEpisodio;
 import com.gabrielfinkler.screenmatch.model.DadosSerie;
 import com.gabrielfinkler.screenmatch.service.ConsumoApi;
 import com.gabrielfinkler.screenmatch.service.ConverteDados;
@@ -24,5 +25,8 @@ public class ScreenmatchApplication implements CommandLineRunner {
 		ConverteDados conversor = new ConverteDados();
 		DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
 		System.out.println(dados);
+		json = consumoApi.obterDados("https://www.omdbapi.com/?t=gilmore+girls&season=1&episode=2&apikey=6585022c");
+		DadosEpisodio dadosEpisodio = conversor.obterDados(json, DadosEpisodio.class);
+		System.out.println(dadosEpisodio);
 	}
 }
